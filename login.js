@@ -5,6 +5,9 @@ function handleCredentialResponse(response) {
 
   alert(`Bienvenido, ${data.name}`);
 
+  // Guardar email en localStorage para usarlo en logout
+  localStorage.setItem("user_email", data.email);
+
   // Mostrar botón de logout
   document.getElementById("logout").style.display = "block";
 
@@ -38,8 +41,17 @@ async function logUserLogin(userData) {
 
 // Manejar el logout
 document.getElementById("logout").addEventListener("click", () => {
-  alert("Sesión cerrada");
-  location.reload();
+  const userEmail = localStorage.getItem("user_email");
+
+  if (userEmail) {
+    google.accounts.id.revoke(userEmail, () => {
+      localStorage.removeItem("user_email"); // Borra el email guardado
+      alert("Sesión cerrada correctamente");
+      location.reload();
+    });
+  } else {
+    alert("No hay sesión activa");
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
