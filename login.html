@@ -1,29 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login with Google</title>
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script src="login.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login con Google</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+    <script src="login.js" defer></script>
 </head>
 <body>
-  <h1>Login with Google</h1>
-  <div id="g_id_onload"
-       data-client_id="606189646329-24m84jjev9f8f1cu8guqp6f6htrhrao1.apps.googleusercontent.com"
-       data-callback="handleCredentialResponse"
-       data-auto_select="true"
-       data-itp_support="true">
-  </div>
-  <div class="g_id_signin"
-       data-type="standard"
-       data-shape="rectangular"
-       data-theme="outline"
-       data-text="signin_with"
-       data-size="large"
-       data-logo_alignment="left">
-  </div>
+    <h1>Iniciar sesión con Google</h1>
+    
+    <!-- Botón de Google -->
+    <div id="g_id_onload"
+         data-client_id="606189646329-4rc1c8duh1pcj7sh8dnr46ic3gc2dhum.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse"
+         data-auto_select="true"
+         data-itp_support="true">
+    </div>
+    
+    <div class="g_id_signin" data-type="standard"></div>
 
-  <button id="logout" style="display:none;">Cerrar sesión</button>
+    <!-- Botón de cerrar sesión -->
+    <button id="logoutBtn" style="display:none;" onclick="logout()">Cerrar sesión</button>
+
 </body>
 </html>
